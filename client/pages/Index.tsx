@@ -28,19 +28,40 @@ export default function Index() {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Website",
-      description: "East Godavari Pickles - An upcoming e-commerce platform for selling traditional pickles online",
+      title: "East Godavari Pickles E-commerce",
+      description: "A full-featured e-commerce platform for selling traditional pickles online with product listings, shopping cart, and payment integration",
       technologies: ["React", "Node.js", "MongoDB"],
-      status: "Upcoming",
+      status: "Completed",
       link: "#",
     },
     {
       id: 2,
       title: "Portfolio Website",
-      description: "A responsive personal portfolio showcasing projects and skills",
+      description: "A responsive personal portfolio showcasing projects and skills with smooth animations and modern design",
       technologies: ["React", "Tailwind CSS", "TypeScript"],
       status: "Completed",
       link: "#",
+    },
+  ];
+
+  const featuredProjects = [
+    {
+      id: 1,
+      title: "Menstrual Cycle Tracker",
+      description: "A comprehensive mobile-friendly application designed to help users track their menstrual cycle, predict upcoming periods, and log symptoms. Includes period predictions, symptom tracking, and health insights.",
+      technologies: ["React", "JavaScript", "Local Storage"],
+      status: "Completed",
+      link: "#",
+      icon: "📱",
+    },
+    {
+      id: 2,
+      title: "RMap Coordinator",
+      description: "A collaborative route mapping and coordination tool for organizing group travels and logistics. Features real-time location tracking, route optimization, and team coordination features.",
+      technologies: ["React", "Google Maps API", "Firebase"],
+      status: "Completed",
+      link: "#",
+      icon: "🗺️",
     },
   ];
 
@@ -122,7 +143,7 @@ export default function Index() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 md:py-24 bg-card/50">
+      <section id="about" className="py-16 md:py-24 bg-accent/5">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">About Me</h2>
 
@@ -170,7 +191,7 @@ export default function Index() {
             {skills.map((skillGroup) => (
               <div
                 key={skillGroup.category}
-                className="p-6 bg-card border border-border/50 rounded-xl hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 group"
+                className="p-6 bg-white border border-border/30 rounded-xl hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/15 group"
               >
                 <h3 className="text-lg font-bold mb-4 text-accent group-hover:text-accent/80 transition-colors">
                   {skillGroup.category}
@@ -193,7 +214,7 @@ export default function Index() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-16 md:py-24 bg-card/50">
+      <section id="projects" className="py-16 md:py-24 bg-accent/5">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Projects</h2>
 
@@ -201,7 +222,7 @@ export default function Index() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-background border border-border/50 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 group flex flex-col"
+                className="bg-white border border-border/30 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/15 group flex flex-col"
               >
                 {/* Project Header */}
                 <div className="h-40 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center relative overflow-hidden">
@@ -260,6 +281,59 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Featured Projects Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-b from-background to-accent/5">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Featured Projects</h2>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {featuredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-white border-2 border-accent/20 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/15 group flex flex-col"
+              >
+                {/* Project Header */}
+                <div className="h-32 bg-gradient-to-br from-accent/30 to-accent/10 flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-accent transition-opacity duration-300" />
+                  <div className="text-center z-10">
+                    <span className="text-6xl mb-2 block">{project.icon}</span>
+                  </div>
+                </div>
+
+                {/* Project Content */}
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-foreground/70 mb-4 flex-1">{project.description}</p>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-accent/10 text-accent text-xs font-semibold rounded-full border border-accent/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* View Project Button */}
+                  <a
+                    href={project.link}
+                    className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold transition-colors mt-auto"
+                  >
+                    View Project
+                    <ExternalLink size={16} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Resume Section */}
       <section id="resume" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -282,7 +356,7 @@ export default function Index() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 bg-card/50">
+      <section id="contact" className="py-16 md:py-24 bg-accent/5">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Get In Touch</h2>
 
@@ -338,7 +412,7 @@ export default function Index() {
                     value={formData.name}
                     onChange={handleFormChange}
                     required
-                    className="w-full px-4 py-2 bg-background border border-border/50 rounded-lg text-foreground focus:outline-none focus:border-accent transition-colors"
+                    className="w-full px-4 py-2 bg-white border border-border/50 rounded-lg text-foreground focus:outline-none focus:border-accent transition-colors"
                     placeholder="Your name"
                   />
                 </div>
@@ -354,7 +428,7 @@ export default function Index() {
                     value={formData.email}
                     onChange={handleFormChange}
                     required
-                    className="w-full px-4 py-2 bg-background border border-border/50 rounded-lg text-foreground focus:outline-none focus:border-accent transition-colors"
+                    className="w-full px-4 py-2 bg-white border border-border/50 rounded-lg text-foreground focus:outline-none focus:border-accent transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -370,7 +444,7 @@ export default function Index() {
                     onChange={handleFormChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-2 bg-background border border-border/50 rounded-lg text-foreground focus:outline-none focus:border-accent transition-colors resize-none"
+                    className="w-full px-4 py-2 bg-white border border-border/50 rounded-lg text-foreground focus:outline-none focus:border-accent transition-colors resize-none"
                     placeholder="Your message..."
                   />
                 </div>
