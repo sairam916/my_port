@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useState } from "react";
-import { ExternalLink, Github, Linkedin, Mail, Download, Code2, Cpu, Globe } from "lucide-react";
+import { ExternalLink, Github, Linkedin, Mail, Download, Code2, Cpu, Globe, X } from "lucide-react";
 
 export default function Index() {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ export default function Index() {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showResumeModal, setShowResumeModal] = useState(false);
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -32,7 +33,7 @@ export default function Index() {
       description: "A full-featured e-commerce platform for selling traditional pickles online with product listings, shopping cart, and payment integration",
       technologies: ["React", "Node.js", "MongoDB"],
       status: "Completed",
-      link: "#",
+      link: "https://ssgodavaripickels.netlify.app/",
     },
     {
       id: 2,
@@ -57,7 +58,7 @@ export default function Index() {
     {
       id: 2,
       title: "RMap Coordinator",
-      description: "A collaborative route mapping and coordination tool for organizing group travels and logistics. Features real-time location tracking, route optimization, and team coordination features.",
+      description: "A goal achievement and roadmap planning tool that helps teams create clean, organized roadmaps to reach their objectives. Features milestone tracking, progress visualization, and collaborative planning capabilities.",
       technologies: ["React", "Google Maps API", "Firebase"],
       status: "Completed",
       link: "#",
@@ -126,16 +127,15 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Profile Image Placeholder */}
+            {/* Profile Image */}
             <div className="flex justify-center animate-slide-in">
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/10 border-2 border-accent/30 flex items-center justify-center overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="text-center z-10">
-                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-5xl md:text-6xl font-bold text-white">SO</span>
-                  </div>
-                  <p className="text-accent font-semibold">Profile Image</p>
-                </div>
+              <div className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl border-2 border-accent/30 overflow-hidden group shadow-lg">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F9c149273ccd34a448610ea3671717cea%2F9c624710524d442a8e57fcaf7d9ffb6b?format=webp&width=800&height=1200"
+                  alt="Sairam Odalmoru"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           </div>
