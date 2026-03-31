@@ -220,9 +220,12 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {projects.map((project) => (
-              <div
+              <a
                 key={project.id}
-                className="bg-white border border-border/30 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/15 group flex flex-col"
+                href={project.status === "Completed" ? project.link : "#"}
+                target={project.status === "Completed" && project.link.startsWith("http") ? "_blank" : undefined}
+                rel={project.status === "Completed" && project.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="bg-white border border-border/30 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/15 group flex flex-col cursor-pointer no-underline"
               >
                 {/* Project Header */}
                 <div className="h-40 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center relative overflow-hidden">
@@ -264,18 +267,15 @@ export default function Index() {
                     ))}
                   </div>
 
-                  {/* View Project Button */}
+                  {/* View Project Link Indicator */}
                   {project.status === "Completed" && (
-                    <a
-                      href={project.link}
-                      className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold transition-colors mt-auto"
-                    >
+                    <div className="inline-flex items-center gap-2 text-accent font-semibold mt-auto">
                       View Project
                       <ExternalLink size={16} />
-                    </a>
+                    </div>
                   )}
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -288,9 +288,10 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {featuredProjects.map((project) => (
-              <div
+              <a
                 key={project.id}
-                className="bg-white border-2 border-accent/20 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/15 group flex flex-col"
+                href={project.link}
+                className="bg-white border-2 border-accent/20 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/15 group flex flex-col cursor-pointer no-underline"
               >
                 {/* Project Header */}
                 <div className="h-32 bg-gradient-to-br from-accent/30 to-accent/10 flex items-center justify-center relative overflow-hidden">
@@ -319,16 +320,13 @@ export default function Index() {
                     ))}
                   </div>
 
-                  {/* View Project Button */}
-                  <a
-                    href={project.link}
-                    className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-semibold transition-colors mt-auto"
-                  >
+                  {/* View Project Link Indicator */}
+                  <div className="inline-flex items-center gap-2 text-accent font-semibold mt-auto">
                     View Project
                     <ExternalLink size={16} />
-                  </a>
+                  </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -344,12 +342,13 @@ export default function Index() {
             </p>
 
             <a
-              href="/resume.pdf"
-              download="Sairam_Odalmoru_Resume.pdf"
+              href="/resume.html"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-accent hover:bg-accent/90 text-accent-foreground font-bold rounded-lg transition-all duration-200 hover:scale-105 text-lg gap-2"
             >
               <Download size={24} />
-              Download Resume
+              View & Download Resume
             </a>
           </div>
         </div>
