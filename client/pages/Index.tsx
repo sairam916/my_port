@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useState } from "react";
-import { ExternalLink, Github, Linkedin, Mail, Download, Code2, Cpu, Globe, X } from "lucide-react";
+import { ExternalLink, Github, Linkedin, Mail, Download, Code2, Cpu, Globe } from "lucide-react";
 
 export default function Index() {
   const [formData, setFormData] = useState({
@@ -10,7 +10,6 @@ export default function Index() {
     message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [showResumeModal, setShowResumeModal] = useState(false);
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
