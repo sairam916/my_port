@@ -130,7 +130,7 @@ export default function Index() {
             <div className="flex justify-center animate-slide-in">
               <div className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl border-2 border-accent/30 overflow-hidden group shadow-lg">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2F9c149273ccd34a448610ea3671717cea%2F9c624710524d442a8e57fcaf7d9ffb6b?format=webp&width=800&height=1200"
+                  src="https://cdn.builder.io/api/v1/image/assets%2F9c149273ccd34a448610ea3671717cea%2F9c624710524d442a8e57fcaf7d9ffb6b?width=800&height=1200"
                   alt="Sairam Odalmoru"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -226,15 +226,26 @@ export default function Index() {
                 rel={project.status === "Completed" && project.link.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="bg-white border border-border/30 rounded-xl overflow-hidden hover:border-accent/50 transition-all duration-300 hover:shadow-lg hover:shadow-accent/15 group flex flex-col cursor-pointer no-underline"
               >
-                {/* Project Header */}
+                {/* Project Header with Visual Preview */}
                 <div className="h-40 bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center relative overflow-hidden">
+                  {project.id === 1 && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-5xl mb-2">🥒</div>
+                        <p className="text-xs text-orange-700 font-semibold">E-Commerce Store</p>
+                      </div>
+                    </div>
+                  )}
+                  {project.id === 2 && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="text-5xl mb-2">💼</div>
+                        <p className="text-xs text-teal-700 font-semibold">Portfolio Website</p>
+                      </div>
+                    </div>
+                  )}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-accent transition-opacity duration-300" />
-                  <div className="text-center z-10">
-                    {project.status === "Upcoming" ? (
-                      <Code2 size={48} className="text-accent/60 mx-auto mb-2" />
-                    ) : (
-                      <Globe size={48} className="text-accent/60 mx-auto mb-2" />
-                    )}
+                  <div className="text-center z-10 absolute">
                     <span
                       className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
                         project.status === "Upcoming"
@@ -294,8 +305,14 @@ export default function Index() {
               >
                 {/* Project Header */}
                 <div className="h-32 bg-gradient-to-br from-accent/30 to-accent/10 flex items-center justify-center relative overflow-hidden">
+                  {project.id === 1 && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-pink-100 via-rose-100 to-pink-50" />
+                  )}
+                  {project.id === 2 && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100" />
+                  )}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-accent transition-opacity duration-300" />
-                  <div className="text-center z-10">
+                  <div className="text-center z-10 relative">
                     <span className="text-6xl mb-2 block">{project.icon}</span>
                   </div>
                 </div>
@@ -341,7 +358,7 @@ export default function Index() {
             </p>
 
             <a
-              href="/resume.html"
+              href="/resume.pdf.html"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-accent hover:bg-accent/90 text-accent-foreground font-bold rounded-lg transition-all duration-200 hover:scale-105 text-lg gap-2"

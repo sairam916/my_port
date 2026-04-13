@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: "dist/spa",
+    target: "es2020",
   },
   plugins: [react(), expressPlugin()],
   resolve: {
