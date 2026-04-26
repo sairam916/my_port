@@ -16,34 +16,36 @@ export function Header() {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-background/90 backdrop-blur-sm border-b border-border z-50 shadow-sm">
-      <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-md border-b border-border/40 z-50 shadow-lg">
+      <nav className="container mx-auto px-4 py-5 flex items-center justify-between">
         {/* Logo */}
         <Link
           to="/"
-          className="text-xl font-bold bg-gradient-to-r from-teal-400 to-teal-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+          className="text-2xl font-bold bg-gradient-to-r from-teal-500 to-teal-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity duration-200"
         >
-          Sairam
+          SA
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navItems.map((item) =>
             item.href.startsWith("#") ? (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-foreground/70 hover:text-accent hover:font-semibold transition-colors duration-200"
+                className="relative text-foreground/70 font-medium hover:text-accent transition-colors duration-200 group"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
               </a>
             ) : (
               <Link
                 key={item.label}
                 to={item.href}
-                className="text-foreground/70 hover:text-accent hover:font-semibold transition-colors duration-200"
+                className="relative text-foreground/70 font-medium hover:text-accent transition-colors duration-200 group"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
               </Link>
             )
           )}
@@ -51,24 +53,24 @@ export function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground hover:text-accent transition-colors duration-200 p-2"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </nav>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden border-t border-border animate-fade-in">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+        <div className="md:hidden border-t border-border/40 bg-background/98 backdrop-blur-sm animate-fade-in">
+          <div className="container mx-auto px-4 py-6 flex flex-col gap-6">
             {navItems.map((item) =>
               item.href.startsWith("#") ? (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-foreground/70 hover:text-accent transition-colors duration-200 py-2"
+                  className="text-foreground/70 hover:text-accent transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-accent/5"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
@@ -77,7 +79,7 @@ export function Header() {
                 <Link
                   key={item.label}
                   to={item.href}
-                  className="text-foreground/70 hover:text-accent transition-colors duration-200 py-2"
+                  className="text-foreground/70 hover:text-accent transition-colors duration-200 font-medium py-2 px-4 rounded-lg hover:bg-accent/5"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
